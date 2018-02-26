@@ -1,0 +1,790 @@
+@import "fonts"
+@import "libs"
+@import "vars"
+
+/*Scrollbar Custom BEGIN*/
+::-webkit-scrollbar
+	width: 7px
+
+::-webkit-scrollbar-track-piece
+	background-color: #fff
+
+::-webkit-scrollbar-track
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+	border-radius: 0px
+
+
+::-webkit-scrollbar-thumb 
+	border-radius: 0px
+	background: $accent
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5) 
+
+::-webkit-scrollbar-thumb:window-inactive 
+	background: #000
+
+
+/*Scrollbar Custom END*/
+
+html, body
+	height: 100%
+
+.before
+	content: ''
+	width: 100%
+	height: 100%
+	position: absolute
+	left: 0
+	top: 0 
+
+.text-center
+	text-align: center
+
+.white-popup
+	position: relative
+	background: #FFF
+	padding: 20px
+	width: auto
+	max-width: 500px
+	margin: 20px auto
+
+.mfp-zoom-out 
+	.mfp-with-anim 
+		opacity: 0
+		transition: all 0.3s ease-in-out
+		transform: scale(1.3)
+	&.mfp-bg 
+		opacity: 0
+		transition: all 0.3s ease-out
+	&.mfp-ready
+		.mfp-with-anim 
+			opacity: 1
+			transform: scale(1)
+		&.mfp-bg 
+			opacity: 0.8
+	&.mfp-removing 
+		.mfp-with-anim 
+			transform: scale(1.3);
+			opacity: 0
+		&.mfp-bg 
+			opacity: 0
+
+
+@mixin opacity($opacity)
+	 opacity: $opacity / 100
+	 filtr: alpha(opacity=$opacity)
+
+/*MODAL-BEGIN*/
+input, textarea
+	width: 100%
+	margin-top: 10px
+	margin-bottom: 10px
+
+.mfp-content
+	.h2
+		color: #000
+		span
+			font-family: $default-font 
+	form
+		.form-group
+			position: relative;
+			// padding-left: 35px;
+			.form-control 
+				height: 40px
+				border: 0
+				background: transparent
+				border-bottom: 1px solid #9e9b7e
+				font-size: 12px
+				text-transform: uppercase
+				font-weight: 300
+				color: #000
+				letter-spacing: 1px
+				padding: 0
+				padding-left: 10px
+		.actions
+			.btn
+				border: 1px solid #000	
+				color: #000
+				&:hover
+					background-color: #000
+					color: #FFF  	
+/*MODAL-END*/
+
+/*custom placeholder*/
+::-webkit-input-placeholder
+	color:#000
+::-moz-placeholder
+	color:#000
+::-moz-placeholder
+	color:#000
+::-ms-input-placeholder
+	color:#000
+
+input::-webkit-input-placeholder    
+	text-indent: 0px  
+	transition: text-indent 0.5s ease
+input::-moz-placeholder            
+	text-indent: 0px 
+	transition: text-indent 0.5s ease
+input:focus::-webkit-input-placeholder 
+	text-indent: 1000px 
+	transition: text-indent 0.8s ease
+input:focus::-moz-placeholder          
+	text-indent: 1000px 
+	transition: text-indent 0.8s ease
+/*End custom placeholder*/
+
+.preloader
+	position: fixed
+	top: 0
+	left: 0
+	bottom: 0
+	right: 0
+	z-index: 100 
+	background-color: #000
+	.pulse
+		position: relative
+		left: 50%
+		top: 50vh
+		margin:
+			left: -40px
+			top: -40px
+		&::before, &::after
+			content: ''
+			border: 5px solid #323232
+			width: 80px
+			height: 80px
+			border-radius: 500px    
+			position: absolute
+		&::before
+			animation: pulse-outer .8s ease-in infinite
+		&::after
+			animation: pulse-inner .8s linear infinite
+@keyframes pulse-outer 
+	0%
+		@include opacity(100)			
+	50%
+		@include opacity(50)	
+	100%
+		@include opacity(0)	
+@keyframes pulse-inner 
+	0%
+		@include opacity(0)	
+		transform: scale(0)		
+	100%
+		@include opacity(100)
+		transform: scale(1)	
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.75
+	font-family: $default-font
+	overflow-x: hidden
+	opacity: 1
+	&.isHome
+		.header-site
+			height: 100vh
+			background-color: #FFF //color
+			&::before
+				@extend .before
+				background-color: #423136
+				opacity: 0.58  
+
+			.top-line
+				padding-top: 40px
+				position: absolute
+				width: 100%
+				z-index: 1
+			.text-center
+				display: flex
+				justify-content: center
+				align-items: center
+
+.logo
+	img
+		width: 125px
+		height: auto 
+		margin-left: 45px
+		&.mobile-logo
+			width: 55px
+
+a
+	color: #fff
+	text-decoration: none
+	&:hover
+		text-decoration: none
+
+ul,ol
+	list-style: none
+	text-decoration: none
+	margin: 0
+	padding: 0
+
+.h1,.h2,.h3,.h4,.h5,.h6
+	line-height: 1.4
+	text-transform: uppercase 
+	color: #fff
+	font-family: $defBold-font 
+
+section,header
+	position: relative
+	-webkit-background-size: cover 
+	-o-background-size: cover 
+	background-size: cover 
+	background-position: center 
+
+#my-content, #my-footer
+	background-color: #000
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+/*Custom Navbar BEGIN*/
+.hamburger
+	right: 0
+	position: absolute
+	top: 34px
+	.hamburger-box
+		width: 34px
+		
+.hamburger-inner, .hamburger-inner::after, .hamburger-inner::before
+	border-radius: 0
+	background-color: #FFF 
+	width: 34px
+	height: 2px 
+
+.mm-navbar 
+	position: relative
+	height: auto
+	border: none
+	.mm-title 
+		padding: 0
+		img
+			width: 128px
+			height: auto
+			margin: 10px 0 35px
+			
+html.mm-open:finish
+	overflow-y: scroll 
+.mm-panels > .mm-panel.mm-hasnavbar
+	right: -18px	
+.mm-listview>li:not(.mm-divider):after
+	display: none	
+.mm-panels > .mm-panel::after, .mm-panels > .mm-panel::before
+	height: 0		
+.mm-panels>.mm-panel>.mm-listview:first-child, .mm-panels>.mm-panel>.mm-navbar+.mm-listview
+	margin-top: 0	
+.mm-menu.mm-theme-black .mm-listview>li.mm-selected>a:not(.mm-next), .mm-menu.mm-theme-black .mm-listview>li.mm-selected>span
+	background-color: transparent
+	color: #fff 	
+.mm-panels>.mm-panel>.mm-listview:first-child, .mm-panels>.mm-panel>.mm-navbar+.mm-listview
+	font-family: $defBold-font 	
+	font-size: 18px
+.mm-listview 
+	> li
+		> a
+			transition: color .25s ease
+			padding: 
+			 	left: 14%
+			 	right: 14%
+			 	top: 8px  
+			&:hover
+				color: #fff 	 
+		&.active
+			&>a
+				color: #fff
+/*Custom Navbar END*/	 
+/**/
+.btn
+    display: inline-block
+    border: none
+    color: #fff
+    text-decoration: none
+    background-color: transparent
+    padding: 15px 45px
+    font-size: 13px
+    text-transform: uppercase
+    font-weight: 600
+    letter-spacing: 3px
+    border-radius: 0px
+    border: 1px solid #fff
+    text-align: center
+    position: relative
+    outline: none
+    transition: background-color .7s ease
+    &:focus, &:hover
+        text-decoration: none
+        color: #fff
+    &:hover
+        background-color: #FFF 
+        color: #000
+        &::after
+            opacity: .22
+    // &:active
+    //     background-color: #785ca8
+        &::after
+            opacity: .32
+/**/
+
+.header-flex
+	position: relative
+	p
+		color: #FFF 
+	
+.flex-center
+	margin: auto 
+
+.header-composition
+	text-align: center
+	position: relative
+	color: #FFF 
+	.welcome
+		.h1
+			font-family: $defBold-font 
+			font-size: 62px
+			position: relative 
+			span
+				font-family: $square-font 
+				font-size: 100px  
+			&::after
+				position: absolute
+				content: '' 
+				height: 2px
+				background-color: #fff 
+				width: 280px
+				display: block
+				bottom: 0
+				left: 50%
+				transform: translate(-50%,0) 
+		.p
+			padding-top: 10px
+			padding-bottom: 10px
+			font-size: 14px
+			-webkit-align-items: center 
+			align-items: center 
+			margin: 0
+.register
+	position: absolute
+	bottom: 10%
+.goto-next
+	position: absolute
+	bottom: 34px
+	left: 50%
+	z-index: 2
+	display: inline-block
+	-webkit-transform: translate(0, -50%)
+	transform: translate(0, -50%)
+	color: #fff
+	letter-spacing: .1em
+	text-decoration: none
+	transition: opacity .3s
+	padding-top: 20px
+
+	
+.goto-next span
+	position: absolute
+	top: 0
+	left: 50%
+	width: 24px
+	height: 24px
+	margin-left: -12px
+	border-left: 1px solid #fff
+	border-bottom: 1px solid #fff
+	-webkit-transform: rotate(-45deg)
+	transform: rotate(-45deg)
+	box-sizing: border-box
+	animation: sdb05 1.5s infinite;
+
+@-webkit-keyframes sdb05
+  0%
+    -webkit-transform: rotate(-45deg) translate(0, 0)
+    opacity: 0
+
+  50%
+    opacity: 1
+
+  100%
+    -webkit-transform: rotate(-45deg) translate(-20px, 20px)
+    opacity: 0
+
+
+@keyframes sdb05
+  0%
+    transform: rotate(-45deg) translate(0, 0)
+    opacity: 0
+
+  50%
+    opacity: 1
+
+  100%
+    transform: rotate(-45deg) translate(-20px, 20px)
+    opacity: 0
+
+.table-section
+	padding-top: 60px 
+	padding-bottom: 60px
+	color: #FFF
+	.item
+		padding-top: 15px
+    padding-bottom: 15px
+		.ticker-match-team 
+			line-height: 1
+    	margin: 0
+			.figcaption
+				text-transform: uppercase
+				margin-top: 10px
+				font-family: $defBold-font 
+				font-size: 14px
+		.ticker-match-score
+			font-family: $defBold-font 
+			text-transform: uppercase
+			line-height: 1
+			height: 65px
+			font-size: 35px
+			line-height: 65px
+			display: block
+			margin-left: -15px
+			margin-right: -15px
+		.ticker-match-date
+			font-size: 16px
+			color: #808080 
+			line-height: 65px
+			display: block
+			margin-left: -15px
+			margin-right: -15px
+		.view-block
+			margin-top: 20px 
+		.viewing
+			font-size: 11px
+			font-family: $defBold-font 
+			padding: 3px 13px;  
+
+
+
+.section_insta
+	.mob-inst-block
+		display: none
+		.btn
+			width: 100%
+			padding: 71px 0
+	.col-md-4
+		padding: 0
+		figure
+			position: relative
+			float: left
+			overflow: hidden
+			margin: 10px 1%
+			min-width: 320px
+			max-width: 480px
+			max-height: 360px
+			width: 100%
+			height: auto
+			background: #000
+			text-align: center
+			cursor: pointer
+			padding: 0
+			margin: 0
+			img
+				position: relative
+				display: block
+				min-height: 100%
+				max-width: 100%
+				opacity: 0.8
+				-webkit-transition: opacity 0.35s
+				transition: opacity 0.35s
+				&:hover
+					opacity: 0.4
+
+
+.effect-bubba figcaption,
+.effect-bubba figcaption > a
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+
+.effect-bubba figcaption 
+	padding: 2em
+	color: #fff
+	text-transform: uppercase
+	font-size: 1.25em
+	-webkit-backface-visibility: hidden
+	backface-visibility: hidden
+
+.effect-bubba figcaption:before
+	border-top: 1px solid #fff
+	border-bottom: 1px solid #fff
+	-webkit-transform: scale(0,1)
+	transform: scale(0,1)
+
+
+.effect-bubba figcaption:after
+	border-right: 1px solid #fff
+	border-left: 1px solid #fff
+	-webkit-transform: scale(1,0)
+	transform: scale(1,0)
+
+.effect-bubba figcaption::before,
+.effect-bubba figcaption::after
+	position: absolute
+	top: 30px
+	right: 30px
+	bottom: 30px
+	left: 30px
+	content: ''
+	opacity: 0
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s
+	transition: opacity 0.35s, transform 0.35s
+
+.effect-bubba figcaption::before,
+.effect-bubba figcaption::after 
+	pointer-events: none
+
+.section_insta figure h2
+	padding-top: 15%
+	opacity: 0
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
+	font-size: 18px
+	text-transform: capitalize
+	font-weight: 600
+	-webkit-transition: .3s
+	transition: .3s
+	transform: translate3d(0,-20px,0)
+
+.section_insta figure p 
+	letter-spacing: 1px
+	font-size: 46.5%
+	opacity: 0
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s
+	transition: opacity 0.35s, transform 0.35s
+	-webkit-transform: translate3d(0,20px,0)
+	transform: translate3d(0,20px,0)
+	
+
+
+.section_insta  figure:hover figcaption::before,
+.section_insta figure:hover figcaption::after
+	opacity: 1
+	-webkit-transform: scale(1)
+	transform: scale(1)
+
+.section_insta figure:hover h2,
+.section_insta figure:hover p
+	opacity: 1
+	-webkit-transform: translate3d(0,0,0)
+	transform: translate3d(0,0,0)
+
+
+
+
+
+
+
+
+.news-section
+	display: block
+	padding-bottom: 40px
+	padding-top: 40px
+	.row
+		margin-left: -8px
+		margin-right: -8px  
+	
+
+@media (min-width: 768px)
+	.home-news__link 
+		display: block
+
+.news_footer a
+	font-size: 12px
+	float: right
+	margin-top: 16px
+	margin-right: 17px 
+	text-transform: uppercase
+	color: #fff
+	transition: all 200ms ease
+	font-family: $defBold-font 
+	&:hover
+		color: $accent
+
+.news-item
+	position: relative
+	min-height: 1px
+	padding-left: 8px
+	padding-right: 8px
+	position: relative
+	min-height: 1px
+	padding-left: 8px
+	padding-right: 8px
+
+@media (min-width: 1024px)
+	.news-item
+		float: left
+		width: 33.33333333333333%
+
+@media (min-width: 768px)
+	.news-item
+		float: left
+		width: 50%
+
+@media (max-width: 992px)
+	.news-item:nth-child(3)
+		display: none !important
+	.news-item
+		margin-bottom: 20px;
+    
+.news 
+	font-size: 0
+	display: block
+	position: relative
+
+.news--horizontal .news-image
+	padding-bottom: 37%
+	overflow: hidden
+.news--horizontal .news-image, .news--horizontal .news-content
+	width: 50%
+	float: left
+	
+.news-image
+	position: relative
+	height: 0
+	padding-bottom: 75%
+	background: #101015 no-repeat
+	background-position: center center
+
+.news-image img
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	display: block
+
+.news--horizontal .news-content
+	padding-left: 5%
+
+.news-link:after
+	content: ""
+	display: table
+	clear: both
+
+.news-link
+	&:hover .news-title
+		color: $accent
+
+.news .news-title
+	color: #FFF
+	
+.news-title 
+	font-family: $defBold-font 
+	margin-top: 10px
+	font-size: 14px
+	line-height: 22px
+	color: #000
+	text-transform: uppercase
+	display: block
+	transition: 200ms ease
+
+.news-date 
+	margin-top: 10px
+	font-size: 12px
+	line-height: 22px
+	color: #b2b2b2
+	text-transform: uppercase
+	font-family: $defBold-font
+	display: block
+
+.sponsors-section
+	padding-top: 60px
+	
+.sponsors
+	.sponsor
+		height: 100%
+		display: flex
+		margin: auto 	
+	.owl-stage
+		display: flex
+	.owl-item
+		margin-top: 30px
+		img
+			max-width: 100%
+			width: auto
+			display: inline-block
+			margin: auto
+	.owl-nav
+		position: absolute
+		top: 0
+		width: 100%
+		z-index: 2
+		> div
+			position: absolute
+			top: 80px
+			color: #fff
+			font-size: 30px  
+			transition: opasity .5s ease
+			padding: 0 10px 
+			&:hover
+				opacity: .6  
+			&.owl-prev
+				left: -60px
+			&.owl-next
+				right: -60px	
+
+#my-footer
+	.home-footer
+		padding-bottom: 40px
+		padding-top: 60px 
+		.footer-content
+			.h5 ,.p-mail, .copyright .p-copyr
+				margin: 0
+				padding: 0
+			.h5
+				font-size: 17px 
+				font-family: $default-font  
+			.p-mail
+				color: #FFF 		
+			.copyright
+				.p-copyr
+					color: #d4d4d4
+					padding-top: 15px 
+				.lang
+					font-family: $defBold-font
+					&:hover
+						color: $accent
+						transition: .2s ease
+		.icons-block
+			text-align: center
+			padding-top: 30px 
+			.icons
+				position: relative
+				li
+					display: inline-block
+					padding-left: 10px
+					padding-right: 10px
+					a
+						cursor: pointer
+						transition: .3s ease	
+					a.tt:hover
+						color: #4099FF
+					a.vk:hover
+						color: #6D8FB3	
+					a.fb:hover
+						color: #335795	
+					a.yt:hover
+						color: #FD3D40
+					a.tw:hover
+						color: #7E5D85
+
+
+
+.title-modal
+	justify-content: space-between
+	display: flex
+	align-items: center
+	img
+		height: 73px
+
+
+
+@import "media" // Всегда в конце

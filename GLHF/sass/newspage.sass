@@ -1,0 +1,639 @@
+@import "fonts"
+@import "libs"
+@import "vars"
+
+/*Scrollbar Custom BEGIN*/
+::-webkit-scrollbar
+	width: 7px
+
+::-webkit-scrollbar-track-piece
+	background-color: #fff
+
+::-webkit-scrollbar-track
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+	border-radius: 0px
+
+
+::-webkit-scrollbar-thumb 
+	border-radius: 0px
+	background: $accent
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5) 
+
+::-webkit-scrollbar-thumb:window-inactive 
+	background: #000
+
+
+/*Scrollbar Custom END*/
+
+
+html, body
+	height: 100%
+
+.before
+	content: ''
+	width: 100%
+	height: 100%
+	position: absolute
+	left: 0
+	top: 0 
+
+.text-center
+	text-align: center
+
+/*Preloader-BEGIN*/
+@mixin opacity($opacity)
+	 opacity: $opacity / 100
+	 filtr: alpha(opacity=$opacity)
+
+.preloader
+	position: fixed
+	top: 0
+	left: 0
+	bottom: 0
+	right: 0
+	z-index: 100 
+	background-color: #000
+	.pulse
+		position: relative
+		left: 50%
+		top: 50vh
+		margin:
+			left: -40px
+			top: -40px
+		&::before, &::after
+			content: ''
+			border: 5px solid #323232
+			width: 80px
+			height: 80px
+			border-radius: 500px    
+			position: absolute
+		&::before
+			animation: pulse-outer .8s ease-in infinite
+		&::after
+			animation: pulse-inner .8s linear infinite
+@keyframes pulse-outer 
+	0%
+		@include opacity(100)			
+	50%
+		@include opacity(50)	
+	100%
+		@include opacity(0)	
+@keyframes pulse-inner 
+	0%
+		@include opacity(0)	
+		transform: scale(0)		
+	100%
+		@include opacity(100)
+		transform: scale(1)	
+/*Preloader-END*/
+
+.row
+	margin-left: -8px
+	margin-right: -8px
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.75
+	font-family: $default-font
+	overflow-x: hidden
+	opacity: 1
+	&.isContacts
+		.header-site
+			// height: 500px
+			background-color: #000
+			&::before
+				@extend .before
+				background-color: #423136
+				opacity: 0.38  
+
+			.top-line
+				padding-top: 40px
+				position: absolute
+				width: 100%
+				z-index: 1
+				
+.text-center
+	display: flex
+	justify-content: center
+	align-items: center
+
+		
+.logo
+	img
+		width: 125px
+		height: auto 
+		// margin-left: 45px
+		&.mobile-logo
+			width: 55px
+
+a
+	color: #fff
+	text-decoration: none
+	&:hover
+		text-decoration: none
+
+ul,ol
+	list-style: none
+	text-decoration: none
+	margin: 0
+	padding: 0
+
+.h1,.h2,.h3,.h4,.h5,.h6
+	line-height: 1.4
+	text-transform: uppercase 
+	color: #fff
+	font-family: $defBold-font
+	margin: 0
+.p
+	color: #fff 
+
+section,header
+	position: relative
+	-webkit-background-size: cover 
+	-o-background-size: cover 
+	background-size: cover 
+	background-position: center 
+
+#my-content, #my-footer
+	background-color: #000
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+/*Custom Navbar BEGIN*/
+.hamburger
+	right: 0
+	position: absolute
+	top: 34px
+	.hamburger-box
+		width: 34px
+		
+.hamburger-inner, .hamburger-inner::after, .hamburger-inner::before
+	border-radius: 0
+	background-color: #FFF 
+	width: 34px
+	height: 2px 
+
+.mm-navbar 
+	position: relative
+	height: auto
+	border: none
+	.mm-title 
+		padding: 0
+		img
+			width: 128px
+			height: auto
+			margin: 10px 0 35px
+			
+html.mm-open:finish
+	overflow-y: scroll 
+.mm-panels > .mm-panel.mm-hasnavbar
+	right: -18px	
+.mm-listview>li:not(.mm-divider):after
+	display: none	
+.mm-panels > .mm-panel::after, .mm-panels > .mm-panel::before
+	height: 0		
+.mm-panels>.mm-panel>.mm-listview:first-child, .mm-panels>.mm-panel>.mm-navbar+.mm-listview
+	margin-top: 0	
+.mm-menu.mm-theme-black .mm-listview>li.mm-selected>a:not(.mm-next), .mm-menu.mm-theme-black .mm-listview>li.mm-selected>span
+	background-color: transparent
+	color: #fff 	
+.mm-panels>.mm-panel>.mm-listview:first-child, .mm-panels>.mm-panel>.mm-navbar+.mm-listview
+	font-family: $defBold-font 	
+	font-size: 18px
+.mm-listview 
+	> li
+		> a
+			transition: color .25s ease
+			padding: 
+			 	left: 14%
+			 	right: 14%
+			 	top: 8px  
+			&:hover
+				color: #fff 	 
+		&.active
+			&>a
+				color: #fff
+/*Custom Navbar END*/	 
+/**/
+.btn
+    display: inline-block
+    border: none
+    color: #fff
+    text-decoration: none
+    background-color: transparent
+    padding: 15px 45px
+    font-size: 13px
+    text-transform: uppercase
+    font-weight: 600
+    letter-spacing: 3px
+    border-radius: 0px
+    border: 1px solid #fff
+    text-align: center
+    position: relative
+    outline: none
+    transition: background-color .1s ease
+    &:focus, &:hover
+        text-decoration: none
+        color: #fff
+    &:hover
+        background-color: #FFF 
+        color: #000
+        &::after
+            opacity: .22
+    // &:active
+    //     background-color: #785ca8
+        &::after
+            opacity: .32
+/**/
+
+.header-flex
+	display: flex
+	height: 100%
+	position: relative
+	top: 0
+	justify-content: center
+	align-items: center
+	align-content: center
+	flex-wrap: wrap	
+	text-align: center
+	p
+		color: #FFF 
+	
+.flex-center
+	margin: auto 
+
+.header-composition
+	text-align: center
+	position: relative
+	color: #FFF 
+	.welcome-c
+		.h1
+			font-family: $defBold-font 
+			font-size: 62px
+			position: relative 
+			&::after
+				position: absolute
+				content: '' 
+				height: 2px
+				background-color: #fff 
+				width: 230px
+				display: block
+				bottom: 0
+				left: 50%
+				transform: translate(-50%,0) 
+		.p
+			padding-top: 10px
+			padding-bottom: 10px
+			font-size: 14px
+			-webkit-align-items: center 
+			align-items: center 
+			margin: 0
+.register
+	position: absolute
+	bottom: 10%
+.goto-next
+	position: absolute
+	bottom: 34px
+	left: 50%
+	z-index: 2
+	display: inline-block
+	-webkit-transform: translate(0, -50%)
+	transform: translate(0, -50%)
+	color: #fff
+	letter-spacing: .1em
+	text-decoration: none
+	transition: opacity .3s
+	padding-top: 20px
+
+	
+.goto-next span
+	position: absolute
+	top: 0
+	left: 50%
+	width: 24px
+	height: 24px
+	margin-left: -12px
+	border-left: 1px solid #fff
+	border-bottom: 1px solid #fff
+	-webkit-transform: rotate(-45deg)
+	transform: rotate(-45deg)
+	box-sizing: border-box
+	animation: sdb05 1.5s infinite;
+
+@-webkit-keyframes sdb05
+  0%
+    -webkit-transform: rotate(-45deg) translate(0, 0)
+    opacity: 0
+
+  50%
+    opacity: 1
+
+  100%
+    -webkit-transform: rotate(-45deg) translate(-20px, 20px)
+    opacity: 0
+
+
+@keyframes sdb05
+  0%
+    transform: rotate(-45deg) translate(0, 0)
+    opacity: 0
+
+  50%
+    opacity: 1
+
+  100%
+    transform: rotate(-45deg) translate(-20px, 20px)
+    opacity: 0
+
+.info-section
+	padding-top: 60px
+	padding-bottom: 60px
+	.text-center
+		.p
+			color: #fff 
+			width: 700px
+			font-size: 19.5px
+			line-height: 1.1;
+	.p
+		color: #C4C4C4 
+		span
+			color: #fff 
+			font-family: $defBold-font 
+
+input, textarea
+	width: 100%
+	margin-top: 10px
+	margin-bottom: 10px
+
+.connect-section
+	padding-top: 30px
+	padding-bottom: 60px
+	.h5
+		line-height: 1.1
+		margin: 0
+		padding: 0
+		font-family: $default-font
+		color: #C4C4C4
+	.p
+		line-height: 1.1  
+		margin-top: 5px 
+	.map
+		opacity: .7
+		transition: opacity .5s ease
+		&:hover
+		 opacity: 1
+	form
+		.form-group
+			position: relative;
+			// padding-left: 35px;
+			.form-control 
+				height: 40px
+				border: 0
+				background: transparent
+				border-bottom: 1px solid #9e9b7e
+				font-size: 12px
+				text-transform: uppercase
+				font-weight: 300
+				color: #ffffff
+				letter-spacing: 1px
+				padding: 0
+				padding-left: 10px
+		.actions
+			input
+				float: right
+				width: inherit	
+
+form
+	.form-group
+		textarea
+			min-height: 182px !important
+
+/*custom placeholder*/
+::-webkit-input-placeholder
+	color:#fff
+::-moz-placeholder
+	color:#fff
+::-moz-placeholder
+	color:#fff
+::-ms-input-placeholder
+	color:#fff
+
+input::-webkit-input-placeholder    
+	text-indent: 0px  
+	transition: text-indent 0.5s ease
+input::-moz-placeholder            
+	text-indent: 0px 
+	transition: text-indent 0.5s ease
+input:focus::-webkit-input-placeholder 
+	text-indent: 1000px 
+	transition: text-indent 0.8s ease
+input:focus::-moz-placeholder          
+	text-indent: 1000px 
+	transition: text-indent 0.8s ease
+/*End custom placeholder*/
+
+
+.title-modal
+	justify-content: space-between
+	display: flex
+	align-items: center
+	img
+		height: 73px
+
+.founders
+	.f-img
+		img
+			max-width: 100%
+			height: auto
+
+.sponsors-section
+	padding-top: 60px
+	
+.sponsors
+	.sponsor
+		height: 100%
+		display: flex
+		margin: auto 	
+	.owl-stage
+		display: flex
+	.owl-item
+		margin-top: 30px
+		img
+			max-width: 100%
+			width: auto
+			display: inline-block
+			margin: auto
+	.owl-nav
+		position: absolute
+		top: 0
+		width: 100%
+		z-index: 2
+		> div
+			position: absolute
+			top: 80px
+			color: #fff
+			font-size: 30px  
+			transition: opasity .5s ease
+			padding: 0 10px 
+			&:hover
+				opacity: .6  
+			&.owl-prev
+				left: -60px
+			&.owl-next
+				right: -60px	
+
+#my-footer
+	.home-footer
+		padding-bottom: 40px
+		padding-top: 60px 
+		.footer-content
+			.h5 ,.p-mail, .copyright .p-copyr
+				margin: 0
+				padding: 0
+			.h5
+				font-size: 17px 
+				font-family: $default-font  
+			.p-mail
+				color: #FFF 		
+			.copyright
+				.p-copyr
+					color: #d4d4d4
+					padding-top: 15px 
+				.lang
+					font-family: $defBold-font
+					&:hover
+						color: $accent
+						transition: .2s ease
+		.icons-block
+			text-align: center
+			padding-top: 30px 
+			.icons
+				position: relative
+				li
+					display: inline-block
+					padding-left: 10px
+					padding-right: 10px
+					a
+						cursor: pointer
+						transition: .3s ease	
+					a.tt:hover
+						color: #4099FF
+					a.vk:hover
+						color: #6D8FB3	
+					a.fb:hover
+						color: #335795	
+					a.yt:hover
+						color: #FD3D40
+					a.tw:hover
+						color: #7E5D85
+
+.head-title
+	padding-top: 144px
+	.page-heading_title
+		position: relative
+		min-height: 1px
+		padding-left: 8px
+		padding-right: 8px
+		margin-bottom: 45px
+		.h1
+			font-size: 32px
+			line-height: 32px
+
+@media (min-width: 768px)
+	.page-heading_title
+		float: left
+		width: 58.333333333333336%
+
+.news-content
+	padding-top: 40px
+	background-color: #FFF 
+
+@media (min-width: 992px)
+	.aside 
+		display: block !important
+
+.aside 
+	display: none
+
+.article-date
+	font-size: 13px
+	line-height: 24px
+	text-transform: uppercase
+	opacity: .3
+	color: #000
+	font-family: $defBold-font 
+	padding-top: 5px
+
+.page-inner 
+	position: relative
+	min-height: 1px
+	padding-left: 8px
+	padding-right: 8px
+	.page-section
+		border-left: 1px solid #e5e5e5
+		height: 100%
+		padding-left: 10% 
+
+.col-md-3 
+	width: 20%
+
+
+.article-date
+	width: 90%
+	padding-right: 20px
+
+
+@media (min-width: 768px)
+	.page-section 
+		margin-bottom: 60px
+		
+
+@media (max-width:992px)
+	.page-section
+		border: none !important
+		padding-left: 0 !important 
+		
+@media (min-width: 992px)
+	.article-footer 
+		padding-top: 40px
+		padding-bottom: 40px
+		
+.article-footer 
+	background: #f5f5f5
+	padding-top: 20px
+	padding-bottom: 20px
+	.article-footer-content .p
+		margin: 0
+		color: #000
+		font-family: $defBold-font 
+		opacity: .3
+		line-height: 13.7px 
+		padding-top: 5px
+		padding-bottom: 5px
+	.article-footer-aside a
+		color: #000
+		font-family: $defBold-font 
+		transition: 200ms ease
+		opacity: .3
+		padding-top: 5px
+		padding-bottom: 5px
+		&:hover
+			color: $accent
+			opacity: 1
+
+@media (min-width: 992px)
+	.article-footer-content
+		float: left
+		width: 75%
+		padding-left: 3%
+
+@media (min-width: 992px)
+	.article-footer-aside
+		float: left
+		width: 25%
+
+@import "media" // Всегда в конце
