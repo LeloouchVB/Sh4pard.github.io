@@ -1,0 +1,177 @@
+@import "vars"
+
+
+/*==========  Desktop First  ==========*/
+
++media-breakpoint-down(xl)
++media-breakpoint-down(lg)
++media-breakpoint-down(md)
+	.filter-btn
+		display: flex
+		margin-top: 27px
+		margin-bottom: 20px
+		align-items: center
+		justify-content: space-between
+		padding:
+			right: 20px
+		a
+			display: flex
+			width: 100%
+
+	.last-ligne-block
+		display: none
+	
+	.s-ligne-block
+		display: none
+
+	.d-md-none
+		display: block
+
+	.main
+		&:before
+			height: 484px !important		
+		.section-composition
+			.sncf-order
+				order: 2		
+			.ligne-bgc
+				order: 1
+				flex-direction: column !important	
+				.f-ligne-block
+					display: flex
+					flex-direction: column !important
+					align-items: normal !important	
+				.s-ligne-block
+					justify-content: normal !important
+					padding-left: 27px !important
+					flex-direction: column !important
+					align-items: normal !important
+					h4
+						margin-bottom: 10px		
+				.last-ligne-block
+					flex-direction: column !important
+					align-items: normal !important
+					justify-content: normal !important
+					padding-left: 15px !important
+					.count-passangers-block
+						display: flex
+						flex-direction: column
+						color: #939393
+						font-size: 15px
+						padding-left: 12px !important
+						span
+							font-size: 40px
+							color: #000000
+							font-weight: bold					
+					.btn-line
+						display: none !important
+					p
+						display: flex
+						flex-direction: column !important
+						line-height: 34px	
+						span
+							font-size: 37px
+							font-weight: bold
+
+		.timetable-section			
+			.results-info-block
+				display: none !important
+
++media-breakpoint-down(sm)
+	.main
+		&:before
+			height: 413px	!important
+		nav
+			.mobile-navbar-nav
+				padding-top: 80px !important
+				width: 100% !important	
+		.section-composition
+			.sncf-order
+				justify-content: center !important
+				margin: 0 auto
+				margin-top: 20px
+			.test-block
+
+		.help-section
+			.help-button
+				.h-info
+					.span-text
+						font-size: 16px !important
+
+		.timetable-section
+			.table
+				.head-table
+					display: none	
+				.body-table
+					.row
+						padding-top: 0 !important
+						padding-bottom: 0 !important
+						> .col, > [class^=col-]
+							padding-top: 15px
+							padding-bottom: 15px
+						.times-item
+							padding-left: 15px !important
+						.number-item
+							padding-left: 0
+							padding-top: 0
+						.strike-item
+							display: flex
+							flex-direction: column
+							align-items: flex-end
+						.cost-item
+							padding:
+								left: 0 
+								top: 0
+							display: flex
+							flex-direction: column
+							align-items: flex-end
+						.other-info	
+							padding-top: 25px !important
+							padding-bottom: 25px !important
+					.other-results-btn
+						padding: 15px 0 !important
+		.footer
+			margin-top: 50px !important					
++media-breakpoint-down(xs)
+	.main
+		nav
+			.navbar-collapse
+				.navbar-nav
+					.nav-item
+						a
+							font-size: 14px
+							padding: 12px 12px 12px 0px !important
+					.sign-item
+						a
+							padding: 12px 12px !important
+							font-size: 15px !important		
+		.section-composition
+			.sncf-order
+			.breadcrumbs-block
+				.next-step
+					ul
+						li
+							&:after
+								margin-left: 0px !important
+								margin-right: 6px !important
+							a
+								font-size: 12px
+		.help-section
+			.help-button
+				.h-info
+					p
+						font-size: 27px !important
+
+		.footer
+			.d-block-media	
+				display: block		
+
+
+/*==========  Mobile First  ==========*/
+
++media-breakpoint-up(xs)
++media-breakpoint-up(sm)
++media-breakpoint-up(md)
++media-breakpoint-up(lg)
+	.btn-chercher
+		display: none !important
++media-breakpoint-up(xl)
